@@ -1,0 +1,6 @@
+@extends('layouts.app')
+@section('title','Produtos — Painel')
+@section('content')
+<section class="container section"><div class="admin-head"><div><a class="back" href="{{ route('admin.dashboard') }}">← Painel</a><h1>Produtos</h1></div><a class="button" href="{{ route('admin.produtos.create') }}">+ Cadastrar produto</a></div><form class="search-box compact" method="GET"><input name="q" value="{{ request('q') }}" placeholder="Nome ou modelo"><button>Filtrar</button></form><div class="panel table-wrap"><table><thead><tr><th>Produto</th><th>Categoria</th><th>Marca</th><th>Ofertas</th><th>Status</th><th>Ações</th></tr></thead><tbody>@foreach($products as $product)<tr><td><strong>{{ $product->name }}</strong><br><small>{{ $product->model }}</small></td><td>{{ $product->category?->name }}</td><td>{{ $product->brand?->name }}</td><td>{{ $product->offers_count }}</td><td><span class="badge">{{ $product->status }}</span></td><td class="actions"><a href="{{ route('admin.produtos.edit',$product) }}">Editar</a><form method="POST" action="{{ route('admin.produtos.destroy',$product) }}" onsubmit="return confirm('Remover produto e ofertas?')">@csrf @method('DELETE')<button class="danger-link">Excluir</button></form></td></tr>@endforeach</tbody></table></div>{{ $products->links() }}</section>
+@endsection
+

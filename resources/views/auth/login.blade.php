@@ -1,0 +1,4 @@
+@extends('layouts.marketing')
+@section('title','Entrar — CotaSmart')
+@section('content')<section class="auth-shell"><div class="auth-copy"><span class="kicker">ÁREA DO CLIENTE</span><h1>Volte às suas análises.</h1><p>Consulte preços, acompanhe históricos e mantenha sua base organizada.</p></div><div class="auth-box"><h2>Entrar</h2><p>Informe seus dados de acesso.</p><form method="POST" action="{{ route('login.store') }}" class="stack-form">@csrf<label>E-mail<input type="email" name="email" value="{{ old('email') }}" required autofocus></label><label>Senha<input type="password" name="password" required></label><label class="check"><input type="checkbox" name="remember"> Manter conectado</label><button class="btn primary full">Entrar</button></form><p class="form-foot">Ainda não possui acesso? <a href="{{ route('register') }}">Começar teste</a></p></div></section>@endsection
+
