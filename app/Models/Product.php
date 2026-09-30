@@ -12,10 +12,22 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id', 'brand_id', 'name', 'slug', 'model', 'gtin',
-        'description', 'specifications', 'image', 'popularity_score',
-        'search_count', 'last_searched_at', 'last_updated_at',
-        'next_update_at', 'status',
+        'category_id',
+        'brand_id',
+        'name',
+        'slug',
+        'model',
+        'gtin',
+        'external_catalog_id',
+        'description',
+        'specifications',
+        'image',
+        'popularity_score',
+        'search_count',
+        'last_searched_at',
+        'last_updated_at',
+        'next_update_at',
+        'status',
     ];
 
     protected $casts = [

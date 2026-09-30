@@ -46,5 +46,3 @@ Route::middleware('auth')->group(function () {
         Route::delete('/catalogo/fontes/{source}', [CatalogController::class, 'destroySource'])->name('catalog.sources.destroy');
     });
 });
-
-// IA
