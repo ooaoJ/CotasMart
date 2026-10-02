@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         $user = User::create([
             'name' => $data['name'], 'email' => $data['email'], 'password' => $data['password'],
-            'role' => 'user', 'plan' => 'professional', 'subscription_status' => 'trial',
+            'role' => 'user', 'plan' => 'cotasmart', 'subscription_status' => 'trial',
             'trial_ends_at' => now()->addDays(7),
         ]);
         Auth::login($user); $request->session()->regenerate();

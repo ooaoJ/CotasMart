@@ -49,4 +49,11 @@ return [
         'key' => env('SERPAPI_KEY'),
     ],
 
+    'mercadopago' => [
+        'access_token' => env('MERCADO_PAGO_ACCESS_TOKEN'),
+        'webhook_secret' => env('MERCADO_PAGO_WEBHOOK_SECRET'),
+        'back_url' => env('MERCADO_PAGO_BACK_URL'),
+        'notification_url' => env('MERCADO_PAGO_NOTIFICATION_URL'),
+    ],
+
 ];

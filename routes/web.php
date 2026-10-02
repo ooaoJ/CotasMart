@@ -26,6 +26,9 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/assinatura', [SubscriptionController::class, 'show'])->name('subscription.show');
+    Route::post('/assinatura/checkout', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
+    Route::get('/assinatura/retorno', [SubscriptionController::class, 'return'])->name('subscription.return');
+    Route::delete('/assinatura', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
 
     Route::middleware(EnsureSubscriptionActive::class)->prefix('app')->name('app.')->group(function () {
         Route::get('/', [UserDashboardController::class, 'index'])->name('dashboard');
