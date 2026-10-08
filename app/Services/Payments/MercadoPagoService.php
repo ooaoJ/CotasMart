@@ -25,11 +25,8 @@ class MercadoPagoService
             $this->baseUrl . '/preapproval',
             [
                 'reason' => 'Assinatura CotaSmart',
-
                 'external_reference' => (string) $user->id,
-
                 'payer_email' => $user->email,
-
                 'auto_recurring' => [
                     'frequency' => 1,
                     'frequency_type' => 'months',
@@ -40,11 +37,8 @@ class MercadoPagoService
                         'cotasmart.subscription.currency'
                     ),
                 ],
-
                 'back_url' => config('services.mercadopago.back_url'),
-
                 'notification_url' => config('services.mercadopago.notification_url'),
-
                 'status' => 'pending',
             ]
         );
@@ -55,7 +49,7 @@ class MercadoPagoService
                 . $response->body()
             );
         }
-
+        
         return $response->json();
     }
 

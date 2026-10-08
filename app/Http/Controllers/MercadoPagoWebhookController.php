@@ -19,6 +19,13 @@ class MercadoPagoWebhookController extends Controller
         Request $request,
         MercadoPagoService $mercadoPago
     ): Response {
+
+        Log::info('WEBHOOK MERCADO PAGO RECEBIDO', [
+            'headers' => $request->headers->all(),
+            'query' => $request->query(),
+            'body' => $request->all(0)
+        ]);
+
         if (! $this->validSignature($request)) {
             return response('Invalid signature', 401);
         }
