@@ -28,6 +28,26 @@ class SubscriptionController extends Controller
     ): RedirectResponse {
         $user = $request->user();
 
+        $existingSubscription = $user->subscription()
+                                     ->whereIn('status', [
+                                        'pending',
+                                        'authorized',
+                                     ])
+                                     ->latest()
+                                     ->first();
+
+        if ($existingSubscription) {
+            if ($existingSubscription->status === 'authorized') {
+                return redirect()
+                        ->route('subscription.show')
+                        ->with('warning', 'Sua assinatura já está ativa');
+            }
+
+            return redirect()
+                    ->route('subscription.show')
+                    ->with('warning', 'Você já possui uma assinatura pendente. Conclua o pagamento antes de iniciar outra.');
+        }
+
         if ($user->subscription_status === 'active') {
             return redirect()
                 ->route('subscription.show')
